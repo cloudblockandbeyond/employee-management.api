@@ -5,4 +5,28 @@
     <RootNamespace>employee_management.api</RootNamespace>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Remove="wwwroot\" />
+    <Content Remove="wwwroot\images\" />
+    <Content Remove="wwwroot\lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+    <Folder Include="wwwroot\images\" />
+    <Folder Include="Domain\" />
+    <Folder Include="DataAccess\" />
+    <Folder Include="Domain\Models\" />
+    <Folder Include="Domain\DataTransferObjects\" />
+    <Folder Include="DataAccess\Services\" />
+    <Folder Include="Controllers\" />
+    <Folder Include="wwwroot\lib\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Remove="Domain\" />
+    <None Remove="DataAccess\" />
+    <None Remove="Domain\Models\" />
+    <None Remove="Domain\DataTransferObjects\" />
+    <None Remove="DataAccess\Services\" />
+    <None Remove="Controllers\" />
+  </ItemGroup>
 </Project>

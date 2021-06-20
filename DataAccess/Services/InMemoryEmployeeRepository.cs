@@ -4,37 +4,69 @@ using System.Linq;
 using System.Threading.Tasks;
 using employee_management.api.Domain.Models;
 using employee_management.api.Domain.DataTransferObjects;
+using Microsoft.Extensions.Configuration;
 
 namespace employee_management.api.DataAccess.Services
 {
     public class InMemoryEmployeeRepository : IEmployeeRepository
     {
+        private readonly IConfiguration _configuration;
         private readonly List<Department> _departments;
         private readonly List<Employee> _employees;
 
-        public InMemoryEmployeeRepository()
+        public InMemoryEmployeeRepository(IConfiguration configuration)
         {
+            this._configuration = configuration;
+
             this._departments = new List<Department>()
             {
-                new Department() { DepartmentId = 1, DepartmentName = "None" },
-                new Department() { DepartmentId = 2, DepartmentName = "IT" },
-                new Department() { DepartmentId = 3, DepartmentName = "HR" },
-                new Department() { DepartmentId = 4, DepartmentName = "Payroll" }
+                new Department()
+                {
+                    DepartmentId = 1,
+                    DepartmentName = "None"
+                },
+                new Department()
+                {
+                    DepartmentId = 2,
+                    DepartmentName = "IT"
+                },
+                new Department()
+                {
+                    DepartmentId = 3,
+                    DepartmentName = "HR"
+                },
+                new Department()
+                {
+                    DepartmentId = 4,
+                    DepartmentName = "Payroll"
+                }
             };
 
             this._employees = new List<Employee>()
             {
-                new Employee() {
-                    EmployeeId = 1, EmployeeName = "John", EmployeeEmail = "john@employeemanagement.com"
-                    , EmployeeImage = "http://localhost:5000/images/john.png", DepartmentId = this._departments[1].DepartmentId
+                new Employee()
+                {
+                    EmployeeId = 1,
+                    EmployeeName = "John",
+                    EmployeeEmail = "john@employeemanagement.com",
+                    EmployeeImage = $"{ this._configuration["API_URL"] }/{ this._configuration["IMAGE_FOLDER"] }/john.png",
+                    DepartmentId = this._departments[1].DepartmentId
                 },
-                new Employee() {
-                    EmployeeId = 2, EmployeeName = "Mary", EmployeeEmail = "mary@employeemanagement.com"
-                    , EmployeeImage = "http://localhost:5000/images/mary.png", DepartmentId = this._departments[2].DepartmentId
+                new Employee()
+                {
+                    EmployeeId = 2,
+                    EmployeeName = "Mary",
+                    EmployeeEmail = "mary@employeemanagement.com",
+                    EmployeeImage = $"{ this._configuration["API_URL"] }/{ this._configuration["IMAGE_FOLDER"] }/mary.png",
+                    DepartmentId = this._departments[2].DepartmentId
                 },
-                new Employee() {
-                    EmployeeId = 3, EmployeeName = "Sara", EmployeeEmail = "sara@employeemanagement.com"
-                    , EmployeeImage = "http://localhost:5000/images/sara.png", DepartmentId = this._departments[3].DepartmentId
+                new Employee()
+                {
+                    EmployeeId = 3,
+                    EmployeeName = "Sara",
+                    EmployeeEmail = "sara@employeemanagement.com",
+                    EmployeeImage = $"{ this._configuration["API_URL"] }/{ this._configuration["IMAGE_FOLDER"] }/sara.png",
+                    DepartmentId = this._departments[3].DepartmentId
                 },
             };
         }

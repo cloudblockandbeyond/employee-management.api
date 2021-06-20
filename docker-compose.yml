@@ -3,11 +3,9 @@ services:
     employee-management-api: 
         build: 
             context: .
-            dockerfile: Dockerfile
-        image: docker.io/cloudblockandbeyond/employee-management-api:1.0.0
-        container_name: employee-management-api
+            dockerfile: "Dockerfile"
+        image: "docker.io/cloudblockandbeyond/employee-management-api:2.0.0"
+        container_name: "employee-management-api"
         ports: 
             - 
                 5000:80
-            - 
-                5001:443

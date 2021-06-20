@@ -16,11 +16,21 @@ spec:
       containers: 
         - 
           name: employee-management-api-container
-          image: docker.io/cloudblockandbeyond/employee-management-api:1.0.0
+          image: docker.io/cloudblockandbeyond/employee-management-api:2.0.0
           ports:
             - 
               protocol: TCP
               containerPort: 80
+          env:
+            -
+              name: ASPNETCORE_ENVIRONMENT
+              value: "Development"
+            - 
+              name: API_URL
+              value: "http://localhost:30008"
+            -
+              name: IMAGE_FOLDER
+              value: "images" 
           resources: 
             requests: 
               memory: "64Mi"

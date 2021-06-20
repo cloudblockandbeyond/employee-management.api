@@ -20,4 +20,6 @@ EXPOSE 443/tcp
 COPY --from=build /out ./
 ENTRYPOINT ["dotnet", "employee-management.api.dll"]
 
-ENV ASPNETCORE_ENVIRONMENT="Production"
+ENV ASPNETCORE_ENVIRONMENT="Development"
+ENV API_URL="http://localhost:5000"
+ENV IMAGE_FOLDER="images"

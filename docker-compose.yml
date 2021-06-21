@@ -4,7 +4,7 @@ services:
         build: 
             context: .
             dockerfile: "Dockerfile"
-        image: "docker.io/cloudblockandbeyond/employee-management-api:2.0.0"
+        image: "docker.io/cloudblockandbeyond/employee-management-api:3.0.0"
         container_name: "employee-management-api"
         ports: 
             - 

@@ -16,7 +16,7 @@ spec:
       containers: 
         - 
           name: employee-management-api-container
-          image: docker.io/cloudblockandbeyond/employee-management-api:2.0.0
+          image: docker.io/cloudblockandbeyond/employee-management-api:3.0.0
           ports:
             - 
               protocol: TCP

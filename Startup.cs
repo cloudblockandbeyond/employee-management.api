@@ -17,9 +17,15 @@ namespace employee_management.api
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
-            services.AddSingleton<IEmployeeRepository, InMemoryEmployeeRepository>();
+            services.AddCors((options) => {
+                options.AddDefaultPolicy((builder) => {
+                    builder.WithOrigins("*");
+                });
+            });
 
             services.AddControllers();
+
+            services.AddSingleton<IEmployeeRepository, InMemoryEmployeeRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -35,6 +41,8 @@ namespace employee_management.api
             app.UseStaticFiles();
 
             app.UseRouting();
+
+            app.UseCors();
 
             app.UseEndpoints((endpoints) => {
                 endpoints.MapControllers();
